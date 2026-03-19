@@ -77,14 +77,6 @@ async function handler(ctx) {
     const { workspace } = ctx.req.param();
     const limit = ctx.req.query('limit') ? Number.parseInt(ctx.req.query('limit')) : 50;
     
-    // 检查 access key（如果配置了）
-    const configAccessKey = process.env.SLACK_ACCESS_KEY;
-    const requestAccessKey = ctx.req.query('key');
-    
-    if (configAccessKey && configAccessKey !== requestAccessKey) {
-        throw new Error('Invalid or missing access key. Please provide the correct key via ?key= parameter.');
-    }
-    
     const token = process.env[`SLACK_TOKEN_${workspace}`];
     const cookie = process.env[`SLACK_COOKIE_${workspace}`];
 
