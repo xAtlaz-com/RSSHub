@@ -53,9 +53,11 @@ async function handler(ctx) {
             ? {
                   Accept: 'application/vnd.github.v3+json',
                   Authorization: `token ${config.github.access_token}`,
+                  'User-Agent': config.trueUA,
               }
             : {
                   Accept: 'application/vnd.github.v3+json',
+                  'User-Agent': config.trueUA,
               };
 
     return await (Number.isNaN(number) ? allIssues(ctx, user, repo, limit, headers) : singleIssue(ctx, user, repo, number, limit, headers));

@@ -34,7 +34,9 @@ async function handler(ctx) {
     const user = ctx.req.param('user');
     const type = ctx.req.param('type') || 'all';
     const sort = ctx.req.param('sort') || 'created';
-    let headers = {};
+    let headers = {
+        'User-Agent': config.trueUA,
+    };
     if (config.github && config.github.access_token) {
         headers = {
             ...headers,

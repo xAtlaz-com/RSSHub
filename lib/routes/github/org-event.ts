@@ -118,7 +118,9 @@ async function handler(ctx) {
 
     const isAuthenticated = config.github && config.github.access_token;
 
-    const headers: Record<string, string> = {};
+    const headers: Record<string, string> = {
+        'User-Agent': config.trueUA,
+    };
     if (isAuthenticated) {
         headers.Authorization = `token ${config.github.access_token}`;
     }

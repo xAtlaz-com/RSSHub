@@ -36,6 +36,7 @@ async function handler(ctx) {
     const { data: response } = await got(`https://api.github.com/users/${user}/starred`, {
         headers: {
             Accept: 'application/vnd.github.star+json',
+            'User-Agent': config.trueUA,
             Authorization: config.github?.access_token ? `Bearer ${config.github.access_token}` : undefined,
         },
     });

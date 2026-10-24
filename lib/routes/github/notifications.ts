@@ -37,6 +37,7 @@ async function handler(ctx) {
         Accept: 'application/vnd.github.v3+json',
         Authorization: `Bearer ${config.github.access_token}`,
         'X-GitHub-Api-Version': '2022-11-28',
+        'User-Agent': config.trueUA,
     };
 
     const response = await ofetch.raw(`${apiUrl}/notifications`, {

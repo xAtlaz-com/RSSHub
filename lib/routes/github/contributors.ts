@@ -33,7 +33,9 @@ async function handler(ctx) {
     const url = `https://api.github.com/repos/${user}/${repo}/contributors?` + (anon ? 'anon=1' : '');
 
     // Use token if available
-    const headers = {};
+    const headers = {
+        'User-Agent': config.trueUA,
+    };
     if (config.github && config.github.access_token) {
         headers.Authorization = `token ${config.github.access_token}`;
     }

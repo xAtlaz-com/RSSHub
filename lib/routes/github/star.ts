@@ -43,6 +43,7 @@ async function handler(ctx) {
         url,
         headers: {
             Authorization: `bearer ${config.github.access_token}`,
+            'User-Agent': config.trueUA,
         },
         json: {
             query: `
